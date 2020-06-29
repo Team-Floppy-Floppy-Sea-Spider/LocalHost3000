@@ -6,9 +6,10 @@ const { Pool } = require('pg');
 // Depending on the available memory of your PostgreSQL server you may even crash the server if you connect an unbounded number of clients.PostgreSQL can only process one query at a time on a single connected client in a first-in first-out manner. If your multi-tenant web application is using only a single connected client all queries among all simultaneous requests will be pipelined and executed serially, one after the other. No good!
 
 // PostgreSQL can only process one query at a time on a single connected client in a first-in first-out manner. If your multi-tenant web application is using only a single connected client all queries among all simultaneous requests will be pipelined and executed serially, one after the other. No good!
+// const path = require('path');
 
-const PG_URI =
-  'postgres://ysnmrnto:hraE9Loc7oB5lrz_DpGNAfokED8Do7gG@ruby.db.elephantsql.com:5432/ysnmrnto';
+const PG_URI = require('../databaseURI');
+
 
 // create a new pool here using the connection string above
 const pool = new Pool({
@@ -23,7 +24,8 @@ CREATE TABLE user_info (
     name varchar(255),
     home varchar(255),
     email varchar(255),
-    type varchar(255)
+    type varchar(255),
+    profilepic varchar(255)
 );
 */
 
