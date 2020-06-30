@@ -16,7 +16,11 @@ router.get('/', (req, res) =>
 // A Router instance is a complete middleware and routing system;
 // for this reason, it is often referred to as a “mini-app”.
 
-router.post('/register', userController.createUser, userController.login, (req, res) => {
+router.post('/register',
+userController.passwordHasher,
+userController.createUser,
+userController.login,
+(req, res) => {
   console.log('Successful post to database (/register route). ');
   console.log(res.locals.user);
   return res.status(200).json(res.locals.user);
