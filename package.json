@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env nodemon server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open & nodemon server/server.js"
+    "dev": "cross-env NODE_ENV=development concurrently \"webpack-dev-server --open\"  \"nodemon server/server.js\""
   },
   "author": "Team Pikachu",
   "license": "ISC",
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "concurrently": "^5.2.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",

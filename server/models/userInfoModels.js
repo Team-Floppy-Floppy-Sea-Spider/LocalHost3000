@@ -1,3 +1,6 @@
+
+
+
 const { Pool } = require('pg');
 // pool to manage our connections to the database (has a few advantages).
 // There is overhead in establishing new connections to the database that we don't want to wait on for every single query we send.
@@ -8,6 +11,10 @@ const { Pool } = require('pg');
 // PostgreSQL can only process one query at a time on a single connected client in a first-in first-out manner. If your multi-tenant web application is using only a single connected client all queries among all simultaneous requests will be pipelined and executed serially, one after the other. No good!
 // const path = require('path');
 
+// -----------------------------------------
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+// ----------------------------------------
 const PG_URI = require('../databaseURI');
 
 
@@ -32,6 +39,8 @@ CREATE TABLE user_info (
 // We export an object that contains a property called query,
 // which is a function that returns the invocation of pool.query() after logging the query
 // This will be required in the controllers to be the access point to the database
+
+
 
 module.exports = {
   query: (text, params, callback) => {
