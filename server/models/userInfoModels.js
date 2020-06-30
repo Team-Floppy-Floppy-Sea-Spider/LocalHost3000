@@ -1,7 +1,4 @@
-
-
-
-const { Pool } = require('pg');
+const { Pool } = require("pg");
 // pool to manage our connections to the database (has a few advantages).
 // There is overhead in establishing new connections to the database that we don't want to wait on for every single query we send.
 // Having a pool of connections at the ready makes our database queries more performant.
@@ -16,6 +13,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 // ----------------------------------------
 const PG_URI = require('../databaseURI');
+
 
 
 // create a new pool here using the connection string above
@@ -44,7 +42,7 @@ CREATE TABLE user_info (
 
 module.exports = {
   query: (text, params, callback) => {
-    console.log('executed query', text);
+    console.log("executed query", text);
     return pool.query(text, params, callback);
   },
 };
